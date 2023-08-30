@@ -1,5 +1,6 @@
 package tests;
 
+import api.AuthorizationApi;
 import models.LoginResponseModel;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
@@ -7,21 +8,12 @@ import org.openqa.selenium.Cookie;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static io.restassured.RestAssured.given;
 import static tests.TestData.credentials;
 public class LoginTest extends TestBase {
-
+    AuthorizationApi authorizationApi = new AuthorizationApi();
     @Test
     void successfulLoginTest() {
-        LoginResponseModel loginResponse = given()
-                .body(credentials)
-                .accept("application/json")
-                .header("Content-Type", "application/json; charset=utf-8")
-                .when()
-                .post("/Account/v1/Login")
-                .then()
-                .statusCode(200)
-                .extract().as(LoginResponseModel.class);
+        LoginResponseModel loginResponse = authorizationApi.login(credentials);
 
         open("/favicon.ico");
         getWebDriver().manage().addCookie(new Cookie("userID", loginResponse.getUserId()));
