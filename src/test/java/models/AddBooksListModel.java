@@ -1,7 +1,6 @@
-package api;
+package models;
 
 import lombok.Data;
-import models.IsbnModel;
 
 import java.util.List;
 
