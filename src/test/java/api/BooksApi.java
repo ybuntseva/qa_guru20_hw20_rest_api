@@ -1,6 +1,7 @@
 package api;
 
 import models.AddBooksListModel;
+import models.DeleteBookResponseModel;
 import models.LoginResponseModel;
 
 import static io.restassured.RestAssured.given;
@@ -30,13 +31,13 @@ public class BooksApi {
                 .statusCode(201);
     }
 
-    public void deleteBook(LoginResponseModel loginResponse) {
+    public void deleteBook(LoginResponseModel loginResponse, DeleteBookResponseModel deleteBook) {
         given()
                 .contentType(JSON)
                 .header("Authorization", "Bearer " + loginResponse.getToken())
-                .queryParam("UserId", loginResponse.getUserId())
+                .body(deleteBook)
                 .when()
-                .delete("/BookStore/v1/Books")
+                .delete("/BookStore/v1/Book")
                 .then()
                 .statusCode(204);
     }
