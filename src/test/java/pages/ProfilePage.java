@@ -12,8 +12,8 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 public class ProfilePage {
 
     SelenideElement
-    userName = $("#userName-value"),
-    bookList = $(".rt-tbody");
+            userName = $("#userName-value"),
+            bookList = $(".rt-tbody");
 
     public ProfilePage openProfileWithCookies(LoginResponseModel loginResponse) {
         open("/favicon.ico");

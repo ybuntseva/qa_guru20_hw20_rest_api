@@ -7,5 +7,5 @@ import java.util.List;
 @Data
 public class AddBooksListModel {
     private String userId;
-    List<IsbnModel> collectionOfIsbns;
+    private List<IsbnModel> collectionOfIsbns;
 }

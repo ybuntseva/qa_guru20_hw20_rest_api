@@ -9,7 +9,6 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-
         baseURI = "https://demoqa.com";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
