@@ -6,7 +6,8 @@ import lombok.Data;
 @Data
 public class LoginResponseModel {
     private String userId;
-    private String username;
+    @JsonProperty("username")
+    private String userName;
     private String password;
     private String token;
     private String expires;
